@@ -1,0 +1,54 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Post {
+  """post Id"""
+  id: Int!
+
+  """post text"""
+  message: String!
+
+  """post owner"""
+  user: User!
+}
+
+type User {
+  """User primary ID"""
+  id: Int!
+
+  """User's name"""
+  name: String!
+
+  """User's email"""
+  email: String!
+
+  """User's age"""
+  age: Float!
+
+  """User's posts"""
+  posts: [Post!]
+}
+
+type Query {
+  users: [User!]!
+  user(id: Int!): User!
+  posts: [Post!]!
+}
+
+type Mutation {
+  createUser(createUserInput: CreateUserInput!): User!
+  removeUser(id: Int!): User
+  createPost(userId: Int!, message: String!): Post!
+}
+
+input CreateUserInput {
+  """User's name"""
+  name: String!
+
+  """User's email"""
+  email: String!
+
+  """User's age"""
+  age: Float!
+}
